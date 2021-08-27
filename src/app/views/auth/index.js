@@ -1,52 +1,53 @@
-import {useState, useEffect} from 'react'
+import React, { useContext , useState } from 'react';
 import {Link} from 'react-router-dom';
-import { useContext } from 'react';
-import {Ctx} from '../../hooks/context'
-import {loginWS, signupWS} from '../../services/auth-endpoint'
-
+import {loginWS, signupWS} from '../../services/auth-endpoint';
+import {Ctx} from '../../hooks/context';
 import {
-    Box,
-    Button,
-    Form,
-    Heading,
-    Input,
-    InputGroup,
-    InputRightElement,
-    Stack,
-    Text,
-    useColorModeValue,
-  } from '@chakra-ui/react'
+  Box,
+  Button,
+  Heading,
+  Input,
+  InputGroup,
+  InputRightElement,
+  Stack,
+  Text,
+  useColorModeValue,
+} from '@chakra-ui/react'
 
-function Auth({match, history, location, ...restProps}){
-  const [data,setData] = useState({})
+function Auth({match, history, location, ...restProps}) {
 
-  const handleChange = (e)=>{
-    setData({...data,[e.target.name]:e.target.value })
+
+    const [user,setUser] = useState({})
+    const {login} = useContext(Ctx)
+
+    const [show, setShow] = useState(false)
+    const handleClick = () => setShow(!show)
+    const [ loaderSpin, setLoaderSpin] = useState(false)
+    
+
+
+    const onSubmit = async (e) => {
+      e.preventDefault()
+       try{
+        setLoaderSpin(true)
+        const theSubmit = match.path === "/signup" ? signupWS : loginWS
+        const {data} = await theSubmit(user)
+        if(match.path === '/login'){
+          login(data.result)
+        }
+        history.push('/dashboard')
+      }catch(error){
+        console.log("error al enviar data",error.response)
+      } 
   }
   
-  
-    const login = useContext(Ctx)
-
-    const handleSubmit = async (e, user) => {
-        e.preventDefault()
-        
-
-        try{
-        const formSubmit = match.path === "/signup" ? signupWS : loginWS
-        const {data} = await formSubmit(user)
-        if(match.path === "/login" ){
-          login(data.result)
-      }
-      history.push("/profile")
-
-        }catch(error){
-            console.log("El error", error.response)
-        }
-    }
+  const handleChange = (e) => {
+        setUser({...user,[e.target.name]:e.target.value})  
+  }
 
 
-      return(
-        <Box
+  return (
+    <Box
         bg={useColorModeValue('gray.50', 'inherit')}
         minH="100vh"
         py="12"
@@ -60,28 +61,31 @@ function Auth({match, history, location, ...restProps}){
 
           <Text mt="4" mb="8" align="center" maxW="md" fontWeight="medium">
             {`${match.path !== '/signup' ? "Do not have an account?" : 'Alreade have an account?'} | `}
-              <Link to={match.path !== "/signup" ? "/signup" :"/login" }>Click here</Link>
+              <Link color={'orange'} to={match.path !== "/signup" ? "/signup" :"/login" }>Click here</Link>
          </Text>
 
-         <form formSubmit={handleSubmit}>
+          <form onSubmit={onSubmit}> 
           <Stack spacing="6">
-             <Input name="username" type="username" placeholder="Username" onChange={handleChange}/>
+             <Input onChange={handleChange} name="username" type="username" placeholder="Username" />
 
             <InputGroup size="md">
             <Input
+            onChange={handleChange}
                 name="password"
                 pr="4.5rem"
-                type="password"
+                type={show ? "text" : "password"}
                 placeholder="Enter password"
-                onChange={handleChange}
+                
             />
             <InputRightElement width="4.5rem">
-                
+                <Button h="1.75rem" size="sm" onClick={handleClick}>
+                {show ? "Hide" : "Show"}
+                </Button>
             </InputRightElement>
             </InputGroup>
 
             {match.path === "/signup" &&
-            <Input placeholder="Email" name="email" onChange={handleChange}/>}
+            <Input onChange={handleChange} placeholder="Email" name="email" />}
 
 
             <Button type="submit" 
@@ -89,6 +93,7 @@ function Auth({match, history, location, ...restProps}){
                     bg={'orange.300'}
                     _hover={{ bg: 'orange.300' }} 
                     size="lg" fontSize="md" 
+                    isLoading={loaderSpin}
                     >
 
             {match.path === "/signup" ? "Signup" : "Login"}
@@ -99,7 +104,7 @@ function Auth({match, history, location, ...restProps}){
         
         </Box>
       </Box>
-      )
-  }
+  );
+};
 
-export default Auth
+export default Auth;
