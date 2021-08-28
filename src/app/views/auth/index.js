@@ -14,6 +14,9 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react'
 
+
+
+
 function Auth({match, history, location, ...restProps}) {
 
 
@@ -47,6 +50,7 @@ function Auth({match, history, location, ...restProps}) {
 
 
   return (
+    <div >
     <Box
         bg={useColorModeValue('gray.50', 'inherit')}
         minH="100vh"
@@ -60,7 +64,7 @@ function Auth({match, history, location, ...restProps}) {
           </Heading>
 
           <Text mt="4" mb="8" align="center" maxW="md" fontWeight="medium">
-            {`${match.path !== '/signup' ? "Do not have an account?" : 'Alreade have an account?'} | `}
+            {`${match.path !== '/signup' ? "Do not have an account?" : 'Already have an account?'} | `}
               <Link color={'orange'} to={match.path !== "/signup" ? "/signup" :"/login" }>Click here</Link>
          </Text>
 
@@ -104,6 +108,7 @@ function Auth({match, history, location, ...restProps}) {
         
         </Box>
       </Box>
+      </div>
   );
 };
 
