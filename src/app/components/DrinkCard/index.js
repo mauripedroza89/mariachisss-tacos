@@ -1,14 +1,12 @@
-import React,{useState,useEffect} from 'react';
+import React from 'react';
 import {
   Flex,
-  Select,
   Box,
   Image,
   useColorModeValue,
   Icon,
   chakra,
   Tooltip,
-  Text,
   NumberInput,
   NumberInputField,
   NumberInputStepper,
@@ -16,12 +14,10 @@ import {
   NumberDecrementStepper,
 } from '@chakra-ui/react';
 import { FiShoppingCart } from 'react-icons/fi';
-import {prodListEndpoint} from '../../services/product-endpoint';
 
 
 
-function FoodCard({productname,price,image,ingredients,meat,...props}){
-  const [listProd,setListProd] = useState('')
+function DrinkCard({drinkname,price,image,...props}){
  
 
     return(
@@ -35,7 +31,7 @@ function FoodCard({productname,price,image,ingredients,meat,...props}){
         position="relative">
         <Image
           src={image}
-          alt={`Picture of ${productname}`}
+          alt={`Picture of ${drinkname}`}
           roundedTop="m"
         />
 
@@ -47,7 +43,7 @@ function FoodCard({productname,price,image,ingredients,meat,...props}){
               as="h4"
               lineHeight="tight"
               isTruncated>
-              {productname}
+              {drinkname}
             </Box>
             <Tooltip
               label="Add to cart"
@@ -79,17 +75,7 @@ function FoodCard({productname,price,image,ingredients,meat,...props}){
             </NumberInput>
             
           </Flex>
-          <Text mt="4" mb="8" align="left" maxW="md" fontWeight="medium">
-           {ingredients} 
-         </Text>
-          <Select placeholder="Select meat">
-            <option value="Asada">Asada</option>
-            <option value="Pastor">Pastor</option>
-            <option value="Chicken">Chicken</option>
-            <option value="Birria">Birria</option>
-            <option value="Barbacoa">Barbacoa</option>
-            <option value="Standard meat">Standard meat</option>
-          </Select>
+          
         </Box>
       </Box>
     </Flex>
@@ -97,4 +83,4 @@ function FoodCard({productname,price,image,ingredients,meat,...props}){
     )
 }
 
-export default FoodCard;
+export default DrinkCard;

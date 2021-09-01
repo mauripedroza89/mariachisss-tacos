@@ -38,7 +38,8 @@ function Auth({match, history, location, ...restProps}) {
         if(match.path === '/login'){
           login(data.result)
         }
-        history.push('/dashboard')
+        if(user){
+        history.push('/dashboard')}
       }catch(error){
         console.log("error al enviar data",error.response)
       } 

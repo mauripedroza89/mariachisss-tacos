@@ -1,38 +1,33 @@
 import React,{useState,useEffect} from 'react';
-import {FoodCard} from '../../components';
-import {prodListEndpoint} from '../../services/product-endpoint';
-
+import {DrinkGrid, ExtraGrid, FoodGrid, NavBar, SearchBar} from '../../components';
 
 function Dashboard(){
 
-    const [products,setProducts] = useState([
-        {
-            image:
-              'https://media.istockphoto.com/photos/tortilla-wrap-with-fried-minced-meat-and-vegetables-picture-id1134104922?k=6&m=1134104922&s=612x612&w=0&h=uHvx-DCHljM8ivxDAGN5NgQbuFmZFQ8tz5NAyoXSEo0=',
-            name: 'Default',
-            price: 7,
-          },
-          
-    ])
+const [search,setSearch] = useState('')
+const [isfilter,setIsFilter] = useState({drink:false,food:false,extra:false})
+                    //{drink:true,food:false,extra:false}
+const onFilter = (value) => {
+        setIsFilter(value)
+}
 
-    const getData =  async () => {
-        try {
-            const {data} = await prodListEndpoint()
-            setProducts(data.prods)
-        } catch (error) {
-            console.log(error)
-        }
-    }
+const handleChange = (e) =>{
+        setSearch(e.target.value)
+}
 
-    useEffect(()=>{
-        getData()
-    },[])
-
+console.log(search)
     return(
-    <div> { products.map((list, index)=>(
-            <FoodCard key={index} {...list} /> 
-        )
-       )}  </div>
+        <div>
+        <div>
+        <NavBar onFilter={onFilter}/>
+        </div>
+        <SearchBar handleChange={handleChange} />
+     <div> 
+        
+        {isfilter.food && <FoodGrid search={search}/> }
+        {isfilter.extra && <ExtraGrid search={search}/>}
+        {isfilter.drink && <DrinkGrid search={search}/>}
+         </div>
+         </div>
     )
 }
 
