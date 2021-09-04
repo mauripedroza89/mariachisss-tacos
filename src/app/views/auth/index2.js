@@ -3,21 +3,23 @@ import {Link} from 'react-router-dom';
 import {loginWS, signupWS} from '../../services/auth-endpoint';
 import {Ctx} from '../../hooks/context';
 import {
-    Button,
-    Text,
-    Flex,
-    InputGroup,
+  Box,
+  Button,
+  Heading,
+  Input,
+  InputGroup,
   InputRightElement,
-    Heading,
-    Input,
-    
-    Stack,
-    Image,
-  } from '@chakra-ui/react';
-  import { Footer } from '../../components';
-  import background from '../../assets/images/background.png';
-  
-  function Auth({match, history, location, ...restProps}) {
+  Stack,
+  Text,
+  useColorModeValue,
+} from '@chakra-ui/react'
+import { Footer } from '../../components';
+
+
+
+
+function Auth({match, history, location, ...restProps}) {
+
 
     const [user,setUser] = useState({})
     const {login} = useContext(Ctx)
@@ -48,12 +50,17 @@ import {
         setUser({...user,[e.target.name]:e.target.value})  
   }
 
-    return (
-      <div>
-        <div>
-      <Stack minH={'70vh'} direction={{ base: 'column', md: 'row' }}>
-        <Flex p={8} flex={1} align={'center'} justify={'center'}>
-          <Stack spacing={4} w={'full'} maxW={'md'}>
+
+  return (
+    <div >
+    <Box
+        bg={useColorModeValue('gray.50', 'inherit')}
+        minH="100vh"
+        py="12"
+        px={{ base: '4', lg: '8' }}
+      >
+        <Box maxW="md" mx="auto">
+
           <Heading textAlign="center" size="xl" fontWeight="extrabold">
           {match.path === "/signup" ? "Create an account" : "Login to your account"}
           </Heading>
@@ -63,7 +70,7 @@ import {
               <Link color={'orange'} to={match.path !== "/signup" ? "/signup" :"/login" }>Click here</Link>
          </Text>
 
-         <form onSubmit={onSubmit}> 
+          <form onSubmit={onSubmit}> 
           <Stack spacing="6">
              <Input onChange={handleChange} name="username" type="username" placeholder="Username" />
 
@@ -100,21 +107,13 @@ import {
             </Stack>
             </form>
 
-          </Stack>
-        </Flex>
-        <Flex flex={1}>
-          <Image
-            alt={'Login Image'}
-            objectFit={'cover'}
-            src={background}
-          />
-        </Flex>
         
-      </Stack>
+        </Box>
+        <Footer/>
+      </Box>
+      
       </div>
-      <Footer/>
-      </div>
-    );
-  }
+  );
+};
 
-  export default Auth;
+export default Auth;

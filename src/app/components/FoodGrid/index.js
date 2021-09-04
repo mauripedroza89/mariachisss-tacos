@@ -1,7 +1,7 @@
 import React, {useState,useEffect} from 'react';
 import {prodListEndpoint} from '../../services/product-endpoint';
 import FoodCard from '../FoodCard';
-import { Grid, GridItem } from "@chakra-ui/react"
+import { Grid} from "@chakra-ui/react"
 
 function FoodGrid(props){
 

@@ -14,11 +14,10 @@ import {
   MenuDivider,
   useDisclosure,
   useColorModeValue,
-  Stack,
 } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon,ArrowBackIcon } from '@chakra-ui/icons';
 import logo from '../../assets/images/mariachis.png';
-import logo2 from '../../assets/images/logo.png';
+import logo2 from '../../assets/images/mariachi.png';
 import {logoutWS} from '../../services/auth-endpoint';
 
 

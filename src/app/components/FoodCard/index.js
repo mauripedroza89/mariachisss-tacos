@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react';
+import React from 'react';
 import {
   Flex,
   Select,
@@ -16,12 +16,11 @@ import {
   NumberDecrementStepper,
 } from '@chakra-ui/react';
 import { FiShoppingCart } from 'react-icons/fi';
-import {prodListEndpoint} from '../../services/product-endpoint';
 
 
 
 function FoodCard({productname,price,image,ingredients,meat,...props}){
-  const [listProd,setListProd] = useState('')
+  
  
 
     return(
@@ -54,7 +53,7 @@ function FoodCard({productname,price,image,ingredients,meat,...props}){
               bg="white"
               placement={'top'}
               color={'gray.800'}
-              fontSize={'1.2em'}>
+              fontSize={'1em'}>
               <chakra.a href={'#'} display={'flex'}>
                 <Icon as={FiShoppingCart} h={7} w={7} alignSelf={'center'} />
               </chakra.a>
@@ -79,7 +78,7 @@ function FoodCard({productname,price,image,ingredients,meat,...props}){
             </NumberInput>
             
           </Flex>
-          <Text mt="4" mb="8" align="left" maxW="md" fontWeight="medium">
+          <Text mt="2" mb="4" align="left" maxW="md" fontWeight="light">
            {ingredients} 
          </Text>
           <Select placeholder="Select meat">

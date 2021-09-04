@@ -1,0 +1,8 @@
+.dashboard {
+    display: flex;
+    flex-direction: row;
+}
+
+.products {
+    background-color: rgb(252, 169, 138);
+}

@@ -1,7 +1,7 @@
 import React, {useState,useEffect} from 'react';
 import {drinkListEndpoint} from '../../services/drink-endpoint';
 import DrinkCard from '../DrinkCard';
-import { Grid, GridItem } from "@chakra-ui/react"
+import { Grid } from "@chakra-ui/react"
 
 function DrinkGrid(props){
 
@@ -23,7 +23,7 @@ function DrinkGrid(props){
 
     return(
     <div>
-        <Grid  templateColumns="repeat(4, 5fr)" gap={0}> 
+        <Grid  templateColumns="repeat(5, 5fr)" gap={0}> 
         
         { drink.length ? drink.filter((list,index)=>
         list.drinkname.toLowerCase().includes(props.search.toLowerCase())).map((list, index)=>(

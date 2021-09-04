@@ -1,5 +1,6 @@
-import React,{useState,useEffect} from 'react';
-import {DrinkGrid, ExtraGrid, FoodGrid, NavBar, SearchBar} from '../../components';
+import React,{useState} from 'react';
+import {DrinkGrid, ExtraGrid, FoodGrid, Footer, NavBar, SearchBar,Sidebar} from '../../components';
+import './style.css'
 
 function Dashboard(){
 
@@ -19,14 +20,21 @@ console.log(search)
         <div>
         <div>
         <NavBar onFilter={onFilter}/>
-        </div>
         <SearchBar handleChange={handleChange} />
-     <div> 
+        </div>
+        <div className="dashboard">
+        <Sidebar/>
+        <div className="products">
         
         {isfilter.food && <FoodGrid search={search}/> }
         {isfilter.extra && <ExtraGrid search={search}/>}
         {isfilter.drink && <DrinkGrid search={search}/>}
          </div>
+         <div>
+                 Checkout
+         </div>
+         </div>
+         <Footer/>
          </div>
     )
 }

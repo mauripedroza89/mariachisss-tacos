@@ -2,14 +2,17 @@ import React, {useState } from 'react';
 import {Link} from 'react-router-dom';
 import { extraCreateWS  } from '../../services/extra-endpoint';
 import {
-    Box,
     Button,
     Heading,
     Input,
     Stack,
     Text,
-    useColorModeValue,
+    Flex,
+    Image
   } from '@chakra-ui/react';
+import Sidebar from '../SideBar';
+import background from '../../assets/images/background.png'
+
 
   function CreateExtra({match, history, location, ...restProps}){
 
@@ -50,13 +53,14 @@ import {
   }
 
       return(
-        <Box
-        bg={useColorModeValue('gray.50', 'inherit')}
-        minH="100vh"
-        py="12"
-        px={{ base: '4', lg: '8' }}
-      >
-        <Box maxW="md" mx="auto">
+        <div className="sidebar">
+          <div>
+            <Sidebar/>
+          </div>
+          <Stack minH={'70vh'} direction={{ base: 'column', md: 'row' }}>
+        <Flex p={8} flex={1} align={'center'} justify={'center'}>
+          <Stack spacing={4} w={'full'} maxW={'md'}>
+
 
           <Heading textAlign="center" size="xl" fontWeight="extrabold">
           Add a new extra!
@@ -89,8 +93,18 @@ import {
             </form>
 
         
-        </Box>
-      </Box>
+            </Stack>
+        </Flex>
+        <Flex flex={1}>
+          <Image
+            alt={'Truck Image'}
+            objectFit={'cover'}
+            src={background}
+          />
+        </Flex>
+        
+      </Stack>
+      </div>
       )
   }
 

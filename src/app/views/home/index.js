@@ -1,6 +1,5 @@
 import {
     Container,
-    Heading,
     Stack,
     Text,
     Button,
@@ -8,6 +7,7 @@ import {
   import React from 'react'
 import {Link} from 'react-router-dom';
 import logo from '../../assets/images/mariachis.png'
+import { Footer } from '../../components';
 
 function Home(){
     return(
@@ -45,7 +45,9 @@ function Home(){
 
           </Stack>
         </Stack>
+        <Footer/>
       </Container>
+      
     )
 }
 
