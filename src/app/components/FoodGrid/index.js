@@ -1,14 +1,13 @@
 import React, {useState,useEffect} from 'react';
 import {prodListEndpoint} from '../../services/product-endpoint';
 import FoodCard from '../FoodCard';
-import { Grid, GridItem } from "@chakra-ui/react"
+import { Grid } from "@chakra-ui/react"
 
 function FoodGrid(props){
 
-    const [products,setProducts] = useState([
-        
-          
-    ])
+    const [products,setProducts] = useState([])
+    
+
 
     const getData =  async () => {
         try {
@@ -25,10 +24,10 @@ function FoodGrid(props){
 
     return(
     <div> 
-        <Grid  templateColumns="repeat(4, 1fr)" gap={0}>
+        <Grid  templateColumns="repeat(3, 1fr)" gap={0}>
         { products.length ? products.filter((list,index)=>
         list.productname.toLowerCase().includes(props.search.toLowerCase())).map((list, index)=>(
-            <FoodCard key={index} {...list} /> 
+            <FoodCard key={index} {...list} updateCart={()=>props.updateCart(list,"food")} /> 
         )
        ): "" }  
        </Grid>

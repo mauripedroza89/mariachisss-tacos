@@ -1,0 +1,24 @@
+body {
+    font-family: 'Helvetica';
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  .row {
+    display: flex;
+    justify-content: space-around;
+  }
+  .row.center {
+    align-items: center;
+  }
+  .col-1 {
+    flex: 1;
+  }
+  .col-2 {
+    flex: 2;
+  }
+ 
+  .text-right {
+    text-align: right;
+  }

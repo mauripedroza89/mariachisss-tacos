@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react';
+import React from 'react';
 import {
   Flex,
   Select,
@@ -16,12 +16,11 @@ import {
   NumberDecrementStepper,
 } from '@chakra-ui/react';
 import { FiShoppingCart } from 'react-icons/fi';
-import {prodListEndpoint} from '../../services/product-endpoint';
 
 
 
-function FoodCard({productname,price,image,ingredients,meat,...props}){
-  const [listProd,setListProd] = useState('')
+function FoodCard({updateCart,productname,updateProd, price,image,ingredients,meat,...props}){
+  
  
 
     return(
@@ -50,12 +49,13 @@ function FoodCard({productname,price,image,ingredients,meat,...props}){
               {productname}
             </Box>
             <Tooltip
+              
               label="Add to cart"
               bg="white"
               placement={'top'}
               color={'gray.800'}
-              fontSize={'1.2em'}>
-              <chakra.a href={'#'} display={'flex'}>
+              fontSize={'1em'}>
+              <chakra.a onClick={updateCart}  display={'flex'}>
                 <Icon as={FiShoppingCart} h={7} w={7} alignSelf={'center'} />
               </chakra.a>
             </Tooltip>
@@ -79,17 +79,10 @@ function FoodCard({productname,price,image,ingredients,meat,...props}){
             </NumberInput>
             
           </Flex>
-          <Text mt="4" mb="8" align="left" maxW="md" fontWeight="medium">
+          <Text mt="2" mb="4" align="left" maxW="md" fontWeight="light">
            {ingredients} 
          </Text>
-          <Select placeholder="Select meat">
-            <option value="Asada">Asada</option>
-            <option value="Pastor">Pastor</option>
-            <option value="Chicken">Chicken</option>
-            <option value="Birria">Birria</option>
-            <option value="Barbacoa">Barbacoa</option>
-            <option value="Standard meat">Standard meat</option>
-          </Select>
+          
         </Box>
       </Box>
     </Flex>

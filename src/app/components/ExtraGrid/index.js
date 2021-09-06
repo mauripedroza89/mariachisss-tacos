@@ -1,7 +1,7 @@
 import React, {useState,useEffect} from 'react';
 import {extraListEndpoint} from '../../services/extra-endpoint';
 import ExtraCard from '../ExtraCard';
-import { Grid, GridItem } from "@chakra-ui/react"
+import { Grid } from "@chakra-ui/react"
 
 function ExtraGrid(props){
 
@@ -23,7 +23,7 @@ function ExtraGrid(props){
 
     return(
     <div> 
-        <Grid  templateColumns="repeat(4, 3fr)" gap={0}>
+        <Grid  templateColumns="repeat(5, 3fr)" gap={0}>
         { extra.length ? extra.filter((list,index)=>
         list.productname.toLowerCase().includes(props.search.toLowerCase())).map((list, index)=>(
             <ExtraCard key={index} {...list} /> 
