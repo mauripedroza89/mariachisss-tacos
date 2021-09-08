@@ -22,3 +22,26 @@ body {
   .text-right {
     text-align: right;
   }
+
+  .billrow {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+   
+  }
+
+  .billcol {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 1;
+    justify-content: space-around;
+  }
+
+  .billcol1 {
+    height: 70px;
+  }
+  .billcol2 {
+    height: 80px;
+  }

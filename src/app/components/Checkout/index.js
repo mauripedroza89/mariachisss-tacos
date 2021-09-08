@@ -7,7 +7,13 @@ import {
     Heading,
     Stack,
     Flex,
+    Alert
   } from '@chakra-ui/react';
+import img5dollar from '../../assets/images/5dollars.png';
+import img10dollar from '../../assets/images/10dollars.png';
+import img20dollar from '../../assets/images/20dollars.png';
+import img50dollar from '../../assets/images/50dollars.png';
+import img100dollar from '../../assets/images/100dollars.png';
 
 function Checkout(){
     const [navSize, changeNavSize] = useState("large")
@@ -26,6 +32,7 @@ function Checkout(){
             borderRadius={navSize == "small" ? "10px" : "10px"}
             alignItems={navSize == "small" ? "right" : "flex-start"}
             w={navSize == "small" ? "75px" : "200px"}
+            w="250px"
             flexDir="column"
             justifyContent="space-between"
             backgroundColor={"#ffba70"} >
@@ -80,17 +87,41 @@ function Checkout(){
                 </div>
               </div>
               <hr />
-              <div className="row">
+              <Flex p="5%"
+                flexDir="column"
+                w="100%"
+                alignItems={navSize == "small" ? "center" : "flex-start"}
+                as="nav">
+                <Heading textAlign="center" size="l">Amount paid</Heading>
+              <div className="billrow">
+                <div className="billcol">
+                <button className="billcol1"><img src={img5dollar} alt="my image"  />5</button>
+                <button className="billcol1"><img src={img10dollar} alt="my image"  />10</button>
+                <button className="billcol1"><img src={img20dollar} alt="my image"  />20</button>
+                </div>
+                <div className="billcol">
+                <button className="billcol2"><img src={img50dollar} alt="my image"  />50</button>
+                <button className="billcol2"><img src={img100dollar} alt="my image"  />100</button>
+                </div>
+                </div>
+                <div>
               <Button type="submit" 
+                    margin-top="20"
                     colorScheme={'red'}
                     bg={'red.300'}
                     _hover={{ bg: 'orange.300' }} 
                     size="lg" fontSize="md" 
-                    
-                    >
-            Checkout
-            </Button>
-              </div>
+                    >Checkout</Button>
+            </div>
+            <div className="col-2">
+                  <strong>Change Amount</strong>
+                </div>
+                <div className="col-1 text-right">
+                  <Alert status="success">
+                  <Text >$50</Text></Alert>
+                </div>
+
+              </Flex>
             </>
           
         </div>
