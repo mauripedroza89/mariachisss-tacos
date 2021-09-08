@@ -11,7 +11,7 @@ const [cart,setCart] = useState({
      status:"IN PROCESS"
 })
 const [search,setSearch] = useState('')
-const [isfilter,setIsFilter] = useState({drink:false,food:false,extra:false})
+const [isfilter,setIsFilter] = useState({div:true,drink:false,food:false,extra:false})
                     //{drink:true,food:false,extra:false}
 
 
@@ -43,7 +43,7 @@ console.log(search)
         <div className="dashboard">
         <Sidebar/>
         <div className="products">
-        
+        {isfilter.div && <div className="freespace">Welcome to Mariachisss Tacos! </div>}
         {isfilter.food && <FoodGrid search={search} updateCart={updateCart}/> }
         {isfilter.extra && <ExtraGrid search={search}/>}
         {isfilter.drink && <DrinkGrid search={search}/>}
