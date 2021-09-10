@@ -13,11 +13,11 @@ import {
   NumberIncrementStepper,
   NumberDecrementStepper,
 } from '@chakra-ui/react';
-import { FiShoppingCart } from 'react-icons/fi';
+import { FaOpencart } from 'react-icons/fa';
 
 
 
-function DrinkCard({drinkname,price,image,...props}){
+function DrinkCard({updateCart,drinkname,price,image,...props}){
  
 
     return(
@@ -51,8 +51,8 @@ function DrinkCard({drinkname,price,image,...props}){
               placement={'top'}
               color={'gray.800'}
               fontSize={'1.2em'}>
-              <chakra.a href={'#'} display={'flex'}>
-                <Icon as={FiShoppingCart} h={7} w={7} alignSelf={'center'} />
+              <chakra.a onClick={updateCart} display={'flex'}>
+                <Icon as={FaOpencart} h={7} w={7} alignSelf={'center'} />
               </chakra.a>
             </Tooltip>
           </Flex>

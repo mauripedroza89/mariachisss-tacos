@@ -32,7 +32,7 @@ function FoodGrid(props){
        ): "" }  
        </Grid>
        </div>
-    )
+    ) 
 }
 
 export default FoodGrid;

@@ -26,7 +26,7 @@ function ExtraGrid(props){
         <Grid  templateColumns="repeat(5, 3fr)" gap={0}>
         { extra.length ? extra.filter((list,index)=>
         list.productname.toLowerCase().includes(props.search.toLowerCase())).map((list, index)=>(
-            <ExtraCard key={index} {...list} /> 
+            <ExtraCard key={index} {...list} updateCart={()=>props.updateCart(list,"extras")} /> 
         )
        ): "" } 
     </Grid>
