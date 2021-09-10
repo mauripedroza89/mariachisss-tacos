@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useEffect, useState} from 'react';
 import './style.css';
 import { orderCreateWS } from '../../services/order-endpoint';
 import {
@@ -15,14 +15,36 @@ import img20dollar from '../../assets/images/20dollars.png';
 import img50dollar from '../../assets/images/50dollars.png';
 import img100dollar from '../../assets/images/100dollars.png';
 
-function Checkout(){
+function Checkout({theCart,history}){
     const [navSize, changeNavSize] = useState("large")
     const [order,setOrder] = useState({})
-    
-    
+    const [ loaderSpin, setLoaderSpin] = useState(false)
 
+    const onSubmit = async (e) => {
+      e.preventDefault()
+
+        try{
+        setLoaderSpin(true)
+        const formData = new FormData()
+        const _data = {...order}
+          for ( let key in _data ) {
+              formData.append(key,_data[key])
+          }
+
+        const theSubmit = orderCreateWS
+        const {data} = await theSubmit(formData)
+        history.push('/orderrecord')
+      }catch(error){
+        console.log("error al enviar data",error.response)
+      } 
+  } 
+   
+  const handleChange = (e) => {
+    setOrder({...order,[e.target.name]:e.target.value})  
+}
 
     return(
+      <form onSubmit={onSubmit}>
         <Stack minH={'80vh'} direction={{ base: 'column', md: 'row' }} 
         pos="sticky"
             left="0"
@@ -48,8 +70,8 @@ function Checkout(){
           </Heading>
         <div>
           
-            <div  className="row">
-              <div className="col-2">Gorditas</div>
+            {theCart.orderproducts.map((product,index)=> <div  className="row">
+              <div className="col-2" onChange={handleChange} name="orderproducts">{product.productname || product.drinkname}</div>
               <div className="col-2">
                 <Button type="submit" 
                     colorScheme={'red'}
@@ -63,27 +85,21 @@ function Checkout(){
                 </Button>
               </div>
   
-              <div className="col-2 text-right">
-                1 x $7
+              <div className="col-2 text-right" >
+                {product.cant} x ${product.price}
               </div>
-            </div>
+            </div>)}
           
   
           
             <>
               <hr></hr>
               <div className="row">
-                <div className="col-2">Items Price</div>
-                <div className="col-1 text-right">$8</div>
-              </div>
-            
-  
-              <div className="row">
                 <div className="col-2">
                   <strong>Total Price</strong>
                 </div>
                 <div className="col-1 text-right">
-                  <strong>$50</strong>
+                  <strong onChange={handleChange} name="total">${theCart.total}</strong>
                 </div>
               </div>
               <hr />
@@ -95,14 +111,25 @@ function Checkout(){
                 <Heading textAlign="center" size="l">Amount paid</Heading>
               <div className="billrow">
                 <div className="billcol">
-                <button className="billcol1"><img src={img5dollar} alt="my image"  />5</button>
-                <button className="billcol1"><img src={img10dollar} alt="my image"  />10</button>
+                <button className="billcol2"><img src={img100dollar} alt="my image"  />100</button>
+                <button className="billcol2"><img src={img50dollar} alt="my image"  />50</button>
                 <button className="billcol1"><img src={img20dollar} alt="my image"  />20</button>
+                
+                
+                
                 </div>
                 <div className="billcol">
-                <button className="billcol2"><img src={img50dollar} alt="my image"  />50</button>
-                <button className="billcol2"><img src={img100dollar} alt="my image"  />100</button>
+                <button className="billcol1"><img src={img10dollar} alt="my image"  />10</button>
+                <button className="billcol1"><img src={img5dollar} alt="my image"  />5</button>
                 </div>
+                </div>
+                
+            <div className="col-2">
+                  <strong>Change Amount</strong>
+                </div>
+                <div className="col-1 text-right">
+                  <Alert borderRadius={20} status="success">
+                  <Text >$50</Text></Alert>
                 </div>
                 <div>
               <Button type="submit" 
@@ -111,15 +138,9 @@ function Checkout(){
                     bg={'red.300'}
                     _hover={{ bg: 'orange.300' }} 
                     size="lg" fontSize="md" 
+                    isLoading={loaderSpin}
                     >Checkout</Button>
             </div>
-            <div className="col-2">
-                  <strong>Change Amount</strong>
-                </div>
-                <div className="col-1 text-right">
-                  <Alert status="success">
-                  <Text >$50</Text></Alert>
-                </div>
 
               </Flex>
             </>
@@ -128,6 +149,7 @@ function Checkout(){
         </Stack>
         </Flex>
       </Stack>
+      </form>
     )
 }
 

@@ -27,7 +27,7 @@ function DrinkGrid(props){
         
         { drink.length ? drink.filter((list,index)=>
         list.drinkname.toLowerCase().includes(props.search.toLowerCase())).map((list, index)=>(
-            <DrinkCard key={index} {...list} /> 
+            <DrinkCard key={index} {...list} updateCart={()=>props.updateCart(list,"drinks")} /> 
         )
        ): "" }  
         </Grid>
