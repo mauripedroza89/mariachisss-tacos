@@ -13,7 +13,7 @@ import {
   NumberIncrementStepper,
   NumberDecrementStepper,
 } from '@chakra-ui/react';
-import { FaOpencart } from 'react-icons/fa';
+import { GiShoppingCart } from 'react-icons/gi';
 
 
 
@@ -52,7 +52,7 @@ function DrinkCard({updateCart,drinkname,price,image,...props}){
               color={'gray.800'}
               fontSize={'1.2em'}>
               <chakra.a onClick={updateCart} display={'flex'}>
-                <Icon as={FaOpencart} h={7} w={7} alignSelf={'center'} />
+                <Icon as={GiShoppingCart} h={7} w={7} alignSelf={'center'} />
               </chakra.a>
             </Tooltip>
           </Flex>
