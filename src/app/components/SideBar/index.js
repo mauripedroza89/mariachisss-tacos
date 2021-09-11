@@ -27,8 +27,8 @@ function Sidebar() {
             h="100vh"
             marginTop="0.5vh"
             boxShadow="0 4px 12px 0 rgba(0, 0, 0, 0.05)"
-            borderRadius={navSize == "small" ? "10px" : "10px"}
-            w={navSize == "small" ? "75px" : "200px"}
+            borderRadius={navSize === "small" ? "10px" : "10px"}
+            w={navSize === "small" ? "75px" : "200px"}
             flexDir="column"
             justifyContent="space-between"
             backgroundColor={"#ffba70"}
@@ -38,7 +38,7 @@ function Sidebar() {
                 p="5%"
                 flexDir="column"
                 w="100%"
-                alignItems={navSize == "small" ? "center" : "flex-start"}
+                alignItems={navSize === "small" ? "center" : "flex-start"}
                 as="nav"
             >
                 <IconButton
@@ -47,7 +47,7 @@ function Sidebar() {
                     _hover={{ background: 'none' }}
                     icon={<GiHamburgerMenu />}
                     onClick={() => {
-                        if (navSize == "small")
+                        if (navSize === "small")
                             changeNavSize("large")
                         else
                             changeNavSize("small")
@@ -95,13 +95,13 @@ function Sidebar() {
                 p="5%"
                 flexDir="column"
                 w="100%"
-                alignItems={navSize == "small" ? "center" : "flex-start"}
+                alignItems={navSize === "small" ? "center" : "flex-start"}
                 mb={4}
             >
-                <Divider display={navSize == "small" ? "none" : "flex"} />
+                <Divider display={navSize === "small" ? "none" : "flex"} />
                 <Flex mt={4} align="center">
                     <Avatar size="sm" src={logo} />
-                    <Flex flexDir="column" ml={4} display={navSize == "small" ? "none" : "flex"}>
+                    <Flex flexDir="column" ml={4} display={navSize === "small" ? "none" : "flex"}>
                         <Heading as="h3" size="sm">Mariachisss Tacos</Heading>
                     </Flex>
                 </Flex>
