@@ -10,7 +10,7 @@ import {
   Menu,
   MenuButton,
   MenuList,
-  MenuItem,
+  Image,
   MenuDivider,
   useDisclosure,
   useColorModeValue,
@@ -18,7 +18,8 @@ import {
 import { HamburgerIcon, CloseIcon,ArrowBackIcon } from '@chakra-ui/icons';
 import logo from '../../assets/images/mariachis.png';
 import logo2 from '../../assets/images/mariachi.png';
-import {logoutWS} from '../../services/auth-endpoint';
+import foodmenu from '../../assets/images/mariachisssQR.png';
+import menuavatar from '../../assets/images/foodmenu.jpeg';
 
 
 function NavBar(props) {
@@ -96,40 +97,15 @@ function NavBar(props) {
                 minW={0}>
                 <Avatar
                   size={'sm'}
-                  src={logo}
+                  src={menuavatar}
                 />
               </MenuButton>
               <MenuList>
-                <MenuItem bg={useColorModeValue('orange.100', 'orange.900')}>
-                    <Link rounded={'md'}
-              _hover={{
-              textDecoration: 'none',
-              bg: useColorModeValue('orange.200', 'orange.700'),
-              }}
-               href={'/addfood'}>Add new food</Link></MenuItem>
-                <MenuDivider />
-                <MenuItem bg={useColorModeValue('orange.100', 'orange.900')}>
-                    <Link rounded={'md'}
-              _hover={{
-              textDecoration: 'none',
-              bg: useColorModeValue('orange.200', 'orange.700'),
-              }}
-               href={'/adddrink'}>Add new drinks</Link></MenuItem>
-                <MenuDivider />
-                <MenuItem bg={useColorModeValue('orange.100', 'orange.900')}>
-                    <Link rounded={'md'}
-              _hover={{
-              textDecoration: 'none',
-              bg: useColorModeValue('orange.200', 'orange.700'),
-              }}
-               href={'/addextra'}>Add new extras</Link></MenuItem>
-               <MenuItem bg={useColorModeValue('orange.100', 'orange.900')}>
-                    <Link rounded={'md'}
-              _hover={{
-              textDecoration: 'none',
-              bg: useColorModeValue('orange.200', 'orange.700'),
-              }}
-               href={'/'}><ArrowBackIcon/>Logout</Link></MenuItem>
+                <Image 
+                w={400}
+                h={400}
+                src={foodmenu}/>
+                
               </MenuList>
               
             </Menu>

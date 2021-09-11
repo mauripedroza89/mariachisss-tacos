@@ -26,26 +26,25 @@ const handleChange = (e) =>{
 
 const updateCart = (product,type) =>{
         let newCart = {...cart,orderproducts:[...cart.orderproducts,product]}
+                console.log("elnuevocarrito",newCart)
 
-        const totalCart = newCart.orderproducts.reduce((acc,prodCurrent)=>{
-                return Number(prodCurrent.price)+ acc
-              }, 0);
-            
-            
               const allProd = newCart.orderproducts.reduce((acc,current)=>{
                   //buscamos si existe el elemento dentro del arreglo acc
                 if( acc.find((item)=> item._id === current._id) ){
                   //si existe buscuscamos su posicion
                   const indexProd = acc.findIndex((item)=> item._id === current._id)
                   acc[indexProd].cant = acc[indexProd].cant + 1
-                  acc[indexProd].totalXcant = acc[indexProd].totalXcant + Number(current.price)
+                  acc[indexProd].totalXcant = Number(acc[indexProd].totalXcant) + Number(current.price)
                   return acc
-                }else{
-                  //si no solo agramos al carrito los valores previos pero modificamos el current agradandole las llaves de total por procuto y cantidad inicializada en 1
-                  return [...acc,{...current, cant:1, totalXcant:current.price }]
+                }else{                  //si no solo agramos al carrito los valores previos pero modificamos el current agradandole las llaves de total por procuto y cantidad inicializada en 1
+                  return [...acc,{...current, cant:current.cant ? current.cant : 1, totalXcant:current.totalXcant ? current.totalXcant : current.price }]
                 }
               },[])
-            
+
+              const totalCart = allProd.reduce((acc,prodCurrent)=>{
+                return Number(prodCurrent.totalXcant)+ acc
+              }, 0);
+
               newCart.orderproducts = allProd
               newCart.total = totalCart
               setCart(newCart)
@@ -69,13 +68,13 @@ console.log(search)
         <div className="dashboard">
         <Sidebar/>
         <div className="products">
-        {isfilter.div && <div className="freespace">Welcome to Mariachisss Tacos! </div>}
+        {isfilter.div && <div className="freespace qr">Welcome to Mariachisss Tacos! </div>}
         {isfilter.food && <FoodGrid search={search} updateCart={updateCart}/> }
         {isfilter.extra && <ExtraGrid search={search} updateCart={updateCart}/>}
         {isfilter.drink && <DrinkGrid search={search} updateCart={updateCart}/>}
          </div>
          <div>
-                 <Checkout theCart={cart}/>
+                 <Checkout theCart={cart} updateCart={updateCart}/>
          </div>
          </div>
          <Footer/>

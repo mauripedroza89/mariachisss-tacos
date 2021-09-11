@@ -1,6 +1,6 @@
 import {Switch, Route} from 'react-router-dom';
 import {Auth, Home, Dashboard} from '../views';
-import {ProductCreated,CreateExtra,CreateFood,CreateDrink, OrderCard } from '../components';
+import {ProductCreated,CreateExtra,CreateFood,CreateDrink, OrderGrid } from '../components';
 
 const Router = () => (
     <Switch>
@@ -12,7 +12,7 @@ const Router = () => (
         <Route exact path="/addextra" component={CreateExtra}/>
         <Route exact path="/adddrink" component={CreateDrink}/>
         <Route exact path="/productcreated" component={ProductCreated}/>
-        <Route exact path="/orderrecord" component={OrderCard}/>
+        <Route exact path="/orderrecord" component={OrderGrid}/>
     </Switch>
 )
 

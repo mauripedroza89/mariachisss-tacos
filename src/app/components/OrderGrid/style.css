@@ -1,0 +1,4 @@
+.orderrecord {
+    display: flex;
+    flex-direction: row;
+}
