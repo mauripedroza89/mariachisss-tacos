@@ -11,12 +11,10 @@ import {
   MenuButton,
   MenuList,
   Image,
-  MenuDivider,
   useDisclosure,
   useColorModeValue,
 } from '@chakra-ui/react';
-import { HamburgerIcon, CloseIcon,ArrowBackIcon } from '@chakra-ui/icons';
-import logo from '../../assets/images/mariachis.png';
+import { HamburgerIcon, CloseIcon} from '@chakra-ui/icons';
 import logo2 from '../../assets/images/mariachi.png';
 import foodmenu from '../../assets/images/mariachisssQR.png';
 import menuavatar from '../../assets/images/foodmenu.jpeg';

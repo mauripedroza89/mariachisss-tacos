@@ -6,18 +6,13 @@ import {
   useColorModeValue,
   Icon,
   chakra,
-  Tooltip,
-  NumberInput,
-  NumberInputField,
-  NumberInputStepper,
-  NumberIncrementStepper,
-  NumberDecrementStepper,
+  Tooltip
 } from '@chakra-ui/react';
 import { GiShoppingCart } from 'react-icons/gi';
 
 
 
-function ExtraCard({updateCart,productname,price,image,...props}){
+function ExtraCard({updateCart,orderproducts,price,image,...props}){
  
 
     return(
@@ -31,7 +26,7 @@ function ExtraCard({updateCart,productname,price,image,...props}){
         position="relative">
         <Image
           src={image}
-          alt={`Picture of ${productname}`}
+          alt={`Picture of ${orderproducts}`}
           roundedTop="m"
         />
 
@@ -43,7 +38,7 @@ function ExtraCard({updateCart,productname,price,image,...props}){
               as="h4"
               lineHeight="tight"
               isTruncated>
-              {productname}
+              {orderproducts}
             </Box>
             <Tooltip
               label="Add to cart"
@@ -66,14 +61,6 @@ function ExtraCard({updateCart,productname,price,image,...props}){
               {price}
               
             </Box>
-            <NumberInput w="60px" defaultValue={1} min={1} >
-              <NumberInputField />
-              <NumberInputStepper>
-                <NumberIncrementStepper />
-                <NumberDecrementStepper />
-              </NumberInputStepper>
-            </NumberInput>
-            
           </Flex>
           
         </Box>

@@ -9,13 +9,13 @@ import {
     InputGroup,
   InputRightElement,
     Heading,
-    Input,
+    Input, 
     
     Stack,
     Image,
   } from '@chakra-ui/react';
   import { Footer } from '../../components';
-  import background from '../../assets/images/background.png';
+  import background from '../../assets/images/sacity.jpeg';
   
   function Auth({match, history, location, ...restProps}) {
 

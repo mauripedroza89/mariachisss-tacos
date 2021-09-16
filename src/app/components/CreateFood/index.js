@@ -73,7 +73,7 @@ import background from '../../assets/images/background.png'
 
           <form onSubmit={onSubmit}> 
           <Stack spacing="6">
-             <Input onChange={handleChange} name="productname" type="productname" placeholder="Product Name" />
+             <Input onChange={handleChange} name="orderproducts" type="orderproducts" placeholder="Product Name" />
 
             <Input onChange={handleChange} placeholder="Ingredients" name="ingredients" />
 

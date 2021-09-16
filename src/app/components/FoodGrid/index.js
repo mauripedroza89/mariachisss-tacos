@@ -26,7 +26,7 @@ function FoodGrid(props){
     <div> 
         <Grid  templateColumns="repeat(3, 1fr)" gap={0}>
         { products.length ? products.filter((list,index)=>
-        list.productname.toLowerCase().includes(props.search.toLowerCase())).map((list, index)=>(
+        list.orderproducts.toLowerCase().includes(props.search.toLowerCase())).map((list, index)=>(
             <FoodCard key={index} {...list} updateCart={()=>props.updateCart(list,"food")} /> 
         )
        ): "" }  
