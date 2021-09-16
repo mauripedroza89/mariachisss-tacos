@@ -6,32 +6,27 @@ import {
   useColorModeValue,
   Icon,
   chakra,
-  Tooltip,
-  NumberInput,
-  NumberInputField,
-  NumberInputStepper,
-  NumberIncrementStepper,
-  NumberDecrementStepper,
+  Tooltip
 } from '@chakra-ui/react';
 import { GiShoppingCart } from 'react-icons/gi';
 
 
 
-function DrinkCard({updateCart,drinkname,price,image,...props}){
+function DrinkCard({updateCart,orderproducts,price,image,...props}){
  
 
     return(
       <Flex p={10} w="full" alignItems="center" justifyContent="center">
       <Box
         bg={useColorModeValue('white', 'gray.800')}
-        w="150px"
-        borderWidth="1px"
+        w="160px"
+        borderWidth="3px"
         rounded="lg"
         shadow="lg"
         position="relative">
         <Image
           src={image}
-          alt={`Picture of ${drinkname}`}
+          alt={`Picture of ${orderproducts}`}
           roundedTop="m"
         />
 
@@ -43,7 +38,7 @@ function DrinkCard({updateCart,drinkname,price,image,...props}){
               as="h4"
               lineHeight="tight"
               isTruncated>
-              {drinkname}
+              {orderproducts}
             </Box>
             <Tooltip
               label="Add to cart"
@@ -66,13 +61,6 @@ function DrinkCard({updateCart,drinkname,price,image,...props}){
               {price}
               
             </Box>
-            <NumberInput w="60px" defaultValue={1} min={1} >
-              <NumberInputField />
-              <NumberInputStepper>
-                <NumberIncrementStepper />
-                <NumberDecrementStepper />
-              </NumberInputStepper>
-            </NumberInput>
             
           </Flex>
           

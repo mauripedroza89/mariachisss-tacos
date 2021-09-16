@@ -8,17 +8,13 @@ import {
   chakra,
   Tooltip,
   Text,
-  NumberInput,
-  NumberInputField,
-  NumberInputStepper,
-  NumberIncrementStepper,
-  NumberDecrementStepper,
+
 } from '@chakra-ui/react';
 import { GiShoppingCart } from 'react-icons/gi';
 
 
 Number(123)
-function FoodCard({updateCart,productname,updateProd, price,image,ingredients,meat,...props}){
+function FoodCard({updateCart,orderproducts,updateProd, price,image,ingredients,meat,...props}){
   
  
 
@@ -33,7 +29,7 @@ function FoodCard({updateCart,productname,updateProd, price,image,ingredients,me
         position="relative">
         <Image
           src={image}
-          alt={`Picture of ${productname}`}
+          alt={`Picture of ${orderproducts}`}
           roundedTop="m"
         />
 
@@ -45,7 +41,7 @@ function FoodCard({updateCart,productname,updateProd, price,image,ingredients,me
               as="h4"
               lineHeight="tight"
               isTruncated>
-              {productname}
+              {orderproducts}
             </Box>
             <Tooltip
               

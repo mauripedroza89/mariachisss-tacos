@@ -9,35 +9,22 @@ import {
     Button,
     useColorModeValue,
   } from '@chakra-ui/react';
-  import { AiOutlineNumber,AiFillDollarCircle,AiFillShop } from "react-icons/ai";
+  import {AiFillDollarCircle,AiFillShop } from "react-icons/ai";
   
-function OrderCard() {
+function OrderCard(props) {
+  const {orderproducts,total,_id} = props
     return (
       <Center py={2}>
-          
+           
         <Box
           maxW={'430px'}
-          w={'full'}
+          w={'300px'}
           
-          bg={useColorModeValue('white', 'gray.800')}
+          bg={useColorModeValue('blue.300', 'gray.800')}
           boxShadow={'xl'}
           rounded={'md'}
           overflow={'hidden'}>
-              <Button
-              mt={2}
-              size="xs" fontSize="md"
-              bg={'red.400'}
-              color={'white'}
-              rounded={'xl'}
-              boxShadow={'0 5px 20px 0px rgb(72 187 120 / 43%)'}
-              _hover={{
-                bg: 'red.500',
-              }}
-              _focus={{
-                bg: 'red.500',
-              }}>
-              X
-            </Button>
+
           <Stack
             textAlign={'center'}
             p={2}
@@ -54,25 +41,30 @@ function OrderCard() {
               Order summary
             </Text>
             <Stack direction={'row'} align={'center'} justify={'center'}>
-              <Text fontSize={'xl'} as={AiOutlineNumber}> Total $</Text>
               <Text fontSize={'xl'} fontWeight={800}>
-                Order
+                Order # {_id.slice(_id.length - 3)}
               </Text>
             
             </Stack>
           </Stack>
   
-          <Box bg={useColorModeValue('gray.50', 'gray.900')} px={6} py={10}>
+          <Box bg={useColorModeValue('blue.50', 'gray.900')} px={6} py={10}>
             <List spacing={3}>
               <ListItem>
                 <ListIcon as={AiFillDollarCircle} color="red.400" />
-                Total
-                <Text>$ 50</Text>
+                <strong>Total</strong>
+                <Text>$ {total}</Text>
               </ListItem>
               <ListItem>
                 <ListIcon as={AiFillShop} color="red.400" />
-                Ordered food
-                <Text>Torta, Burrito, Quesadilla, Wings,Sprite, Fanta</Text>
+                <strong>Ordered food</strong>
+                {orderproducts.map((list, index)=><div key={index} {...list} >
+
+                  <strong>{list.orderproducts}</strong>
+                  <p>Price:{list.price}</p>
+                  <span>Quantity:{list.cant}</span>
+
+                </div> )}
               </ListItem>
             </List>
           </Box>

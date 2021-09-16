@@ -1,8 +1,8 @@
 import React,{useState} from 'react';
-import {Checkout, DrinkGrid, ExtraGrid, FoodGrid, Footer, NavBar, SearchBar,Sidebar} from '../../components';
+import {Checkout, DrinkGrid, ExtraGrid, FoodGrid, Footer, NavBar, SearchBar,SendMenu,Sidebar} from '../../components';
 import './style.css'
 
-function Dashboard(){
+function Dashboard({history}){
 
 const [cart,setCart] = useState({
      orderproducts:[],
@@ -25,7 +25,14 @@ const handleChange = (e) =>{
 
 
 const updateCart = (product,type) =>{
-        let newCart = {...cart,orderproducts:[...cart.orderproducts,product]}
+        let newCart
+        if( type === true){
+          newCart = {...cart}
+
+        }else{
+          newCart = {...cart,orderproducts:[...cart.orderproducts,product]}
+
+        }
                 console.log("elnuevocarrito",newCart)
 
               const allProd = newCart.orderproducts.reduce((acc,current)=>{
@@ -68,15 +75,16 @@ console.log(search)
         <div className="dashboard">
         <Sidebar/>
         <div className="products">
-        {isfilter.div && <div className="freespace qr">Welcome to Mariachisss Tacos! </div>}
+        {isfilter.div && <div className="freespace qr">Welcome to Mariachisss Tacos!  </div>}
         {isfilter.food && <FoodGrid search={search} updateCart={updateCart}/> }
         {isfilter.extra && <ExtraGrid search={search} updateCart={updateCart}/>}
         {isfilter.drink && <DrinkGrid search={search} updateCart={updateCart}/>}
          </div>
          <div>
-                 <Checkout theCart={cart} updateCart={updateCart}/>
+                 <Checkout history={history} theCart={cart} updateCart={updateCart}/>
          </div>
          </div>
+         <div><SendMenu/></div>
          <Footer/>
          </div>
     )

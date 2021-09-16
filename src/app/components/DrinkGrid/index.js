@@ -23,10 +23,10 @@ function DrinkGrid(props){
 
     return(
     <div>
-        <Grid  templateColumns="repeat(5, 5fr)" gap={0}> 
+        <Grid  templateColumns="repeat(4, 2fr)" gap={0}> 
         
         { drink.length ? drink.filter((list,index)=>
-        list.drinkname.toLowerCase().includes(props.search.toLowerCase())).map((list, index)=>(
+        list.orderproducts.toLowerCase().includes(props.search.toLowerCase())).map((list, index)=>(
             <DrinkCard key={index} {...list} updateCart={()=>props.updateCart(list,"drinks")} /> 
         )
        ): "" }  

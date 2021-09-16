@@ -11,3 +11,4 @@ export { default as Sidebar } from './SideBar';
 export { default as Checkout } from './Checkout';
 export { default as Footer } from './Footer';
 export { default as OrderGrid } from './OrderGrid';
+export { default as SendMenu } from './SendMenu';
