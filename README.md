@@ -67,7 +67,7 @@ Home
 -Create food.\
   -Add new dishes.\
   -Add new drinks.\
-  -Add extras.\
+  -Add extras
 
 
 ## Components
