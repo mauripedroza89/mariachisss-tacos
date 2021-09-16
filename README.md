@@ -1,6 +1,6 @@
 <br />
 <p align="center">
-  <a href="https://github.com/cesarcarreras/">
+  <a href="https://github.com/inhelliburn89/">
     <img src="./src/app/assets/images/mariachis.png" alt="Logo" width="500" height="500">
   </a>
 
@@ -25,7 +25,7 @@ Mauricio Muñoz [Linkedin](https://www.linkedin.com/in/mauripedroza89/)
 
 # Account to try demo
 
-- Username: mariachis1.\
+- Username: mariachis1
 - Password: 1234
 
 ## Used framework and packages
@@ -67,7 +67,7 @@ Home
 -Create food.\
   -Add new dishes.\
   -Add new drinks.\
-  -Add extras.\
+  -Add extras
 
 
 ## Components
