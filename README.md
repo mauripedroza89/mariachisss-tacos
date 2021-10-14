@@ -1,6 +1,6 @@
 <br />
 <p align="center">
-  <a href="https://github.com/inhelliburn89/">
+  <a href="https://github.com/mauripedroza89/">
     <img src="./src/app/assets/images/mariachis.png" alt="Logo" width="500" height="500">
   </a>
 
